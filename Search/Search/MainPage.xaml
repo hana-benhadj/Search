@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Search"
+             x:Class="Search.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand">
+                </Setter>
+            </Style>
+            <Style x:Key="ImageStyle" TargetType="Image">
+                <Setter Property="WidthRequest" Value="30"/>
+                <Setter Property="HeightRequest" Value="30">
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Orientation="Vertical" BackgroundColor="#80000000">
+    <StackLayout Margin="15,15,15,0" BackgroundColor="White" HeightRequest="100" >
+            <Label Text="Search" Margin="20,10,0,0"/>
+            <SearchBar TextChanged="SearchBar_TextChanged"/>
+        </StackLayout>
+    <StackLayout Orientation="Vertical" Margin="15,10,15,30" BackgroundColor="White">
+        <ListView x:Name="ListViewSearch" SeparatorColor="White" IsPullToRefreshEnabled="true"  HasUnevenRows="true" Margin="0,10,10,0">
+            <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Margin="0,20,0,20">
+                                <Image Source= "{Binding Image}"  HeightRequest="70" WidthRequest="70"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Title}" Style="{StaticResource LabelStyle}" HorizontalOptions="StartAndExpand" TextColor="Black" FontSize="15" Margin="0,10,0,0"/>
+                                    <Label Text="{Binding Type }" Style="{StaticResource LabelStyle}" TextColor="Gray" FontSize="13"/>
+                                    <Label Text="{Binding Price }" Style="{StaticResource LabelStyle}" TextColor="Black" FontSize="15" Margin="0,0,10,0"/>
+                                  
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+    </StackLayout>
+
+</ContentPage>
